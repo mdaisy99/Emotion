@@ -21,6 +21,7 @@
         android:paddingEnd="48dp"
         android:paddingBottom="8dp"
         android:text="오늘의 기분은?"
+        android:textStyle="bold"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -101,13 +102,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:src="@drawable/angry"
-                app:layout_constraintBottom_toTopOf="@+id/btn_anxious"
+                app:layout_constraintBottom_toTopOf="@+id/tv_anxious"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <android.widget.Button
-                android:id="@+id/btn_anxious"
+                android:id="@+id/tv_anxious"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginTop="4dp"
@@ -313,8 +314,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <android.widget.Button
-        android:id="@+id/btn_confirm"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_emotion"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
@@ -324,9 +325,30 @@
         android:gravity="center"
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
-        android:text="확인"
+        android:text="감정 저장"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_confirm"
+        app:layout_constraintHorizontal_bias="0.329"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gl_buttons"
+        app:layout_constraintVertical_bias="0.923" />
+
+    <android.widget.Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/emotion_btn"
+        android:gravity="center"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:text="일기 작성"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_emotion"
         app:layout_constraintTop_toBottomOf="@+id/gl_buttons" />
 </androidx.constraintlayout.widget.ConstraintLayout>
