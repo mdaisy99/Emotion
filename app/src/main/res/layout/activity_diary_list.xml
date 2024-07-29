@@ -10,7 +10,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        tools:ignore="SpeakableTextPresentCheck">
         <LinearLayout
             android:id="@+id/dadarar"
             android:layout_width="match_parent"
