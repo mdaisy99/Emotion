@@ -7,6 +7,8 @@
     android:layout_height="wrap_content"
     tools:context=".Diary_list_item">
 
+    <include layout="@layout/toolbar"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_diary"
         android:layout_width="0dp"
