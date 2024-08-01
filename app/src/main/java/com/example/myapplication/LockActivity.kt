@@ -5,13 +5,14 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class LockActivity : AppCompatActivity() {
 
     private lateinit var buttons: List<Button>
     private lateinit var buttonDel: Button
-    private lateinit var buttonStartStop: Button
+    private lateinit var buttonBackspace: Button
     private lateinit var pwIndicators: List<ImageView>
     private lateinit var sharedPreferences: SharedPreferences
     private var inputPassword: StringBuilder = StringBuilder()
@@ -35,7 +36,7 @@ class LockActivity : AppCompatActivity() {
             findViewById(R.id.button0)
         )
         buttonDel = findViewById(R.id.buttonDel)
-        buttonStartStop = findViewById(R.id.buttonStartStop)
+        buttonBackspace = findViewById(R.id.buttonStartStop)
         pwIndicators = listOf(
             findViewById(R.id.pw01),
             findViewById(R.id.pw02),
@@ -51,7 +52,7 @@ class LockActivity : AppCompatActivity() {
         }
         findViewById<Button>(R.id.button0).setOnClickListener { onNumberButtonClick(0) }
         buttonDel.setOnClickListener { onDeleteButtonClick() }
-        buttonStartStop.setOnClickListener { onBackspaceButtonClick() }
+        buttonBackspace.setOnClickListener { onBackspaceButtonClick() }
 
         if (!sharedPreferences.getBoolean("lock_enabled", false)) {
             // 잠금이 활성화되지 않은 경우 잠금 화면 건너뛰기
@@ -97,6 +98,7 @@ class LockActivity : AppCompatActivity() {
             inputPassword.clear()
             updateIndicators()
             // 암호가 잘못되었다는 메세지 출력
+            Toast.makeText(this, "암호가 잘못되었습니다.", Toast.LENGTH_SHORT).show()
         }
     }
 }

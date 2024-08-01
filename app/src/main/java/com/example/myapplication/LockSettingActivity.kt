@@ -3,13 +3,13 @@ package com.example.myapplication
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.widget.CompoundButton
+import android.widget.Switch
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
 class LockSettingActivity : AppCompatActivity() {
 
-    private lateinit var switchBtn: CompoundButton
+    private lateinit var switchBtn: Switch
     private lateinit var buttonPWChange: Button
     private lateinit var sharedPreferences: SharedPreferences
 

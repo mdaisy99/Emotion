@@ -20,8 +20,8 @@ class PwSettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pwsetting)
 
-        sharedPreferences = getSharedPreferences("앱 기본 설정", MODE_PRIVATE)
-        isChangeMode = intent.getBooleanExtra("변경", false)
+        sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
+        isChangeMode = intent.getBooleanExtra("isChangeMode", false)
 
         buttons = listOf(
             findViewById(R.id.button1),
@@ -93,7 +93,7 @@ class PwSettingActivity : AppCompatActivity() {
     private fun savePassword() {
         if (inputPassword.length == 4) {
             val password = inputPassword.toString()
-            sharedPreferences.edit().putString("비밀번호", password).apply()
+            sharedPreferences.edit().putString("password", password).apply()
             finish() // 잠금 설정 화면으로 돌아가기
         }
     }

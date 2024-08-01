@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import java.util.Timer
 import android.content.BroadcastReceiver
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import android.content.Context
@@ -15,11 +14,10 @@ import android.os.CountDownTimer
 import android.widget.Button
 import android.widget.TextView
 
-
 class Meditation : AppCompatActivity() {
 
-    lateinit var emotionWord : TextView
-    lateinit var emotionMean : TextView
+    lateinit var emotionWord: TextView
+    lateinit var emotionMean: TextView
 
     private lateinit var textMin: TextView
     private lateinit var textSec: TextView
@@ -27,7 +25,6 @@ class Meditation : AppCompatActivity() {
     private var timer: CountDownTimer? = null
     private var isRunning = false
     private var timeInMillis: Long = 0
-
 
     private val midnightReceiver = object : BroadcastReceiver() {
 
@@ -37,7 +34,6 @@ class Meditation : AppCompatActivity() {
             emotionWord.text = newWord
             emotionMean.text = newMean
         }
-
     }
 
     override fun onDestroy() {
@@ -47,7 +43,6 @@ class Meditation : AppCompatActivity() {
     }
 
     private fun getNewEmotionWordAndMean(): Pair<String, String> {
-
         // 오늘의 랜덤 단어 (10개의 단어 세트)
         val emotionPairs = listOf(
             Pair("감동하다", "크게 느끼어 마음이 움직이다."),
@@ -66,11 +61,9 @@ class Meditation : AppCompatActivity() {
         return emotionPairs.random()
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
         setContentView(R.layout.activity_meditation)
 
         // TextView 초기화
@@ -78,7 +71,7 @@ class Meditation : AppCompatActivity() {
         emotionMean = findViewById(R.id.emotionMean)
 
         // 자정 알람 설정
-        AlarmHelper.setMidnightAlarm(this)
+        // AlarmHelper.setMidnightAlarm(this)  // 알람 설정 부분 주석 처리
 
         // LocalBroadcastManager 등록
         LocalBroadcastManager.getInstance(this).registerReceiver(midnightReceiver, IntentFilter("MIDNIGHT_ALARM"))
@@ -130,15 +123,12 @@ class Meditation : AppCompatActivity() {
             }
         }
 
-        setContentView(R.layout.activity_meditation)
-    ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-        val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-        v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-        insets
-
-
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            WindowInsetsCompat.CONSUMED
+        }
     }
-}
 
     private fun onNumberButtonClick(number: String) {
         val currentMin = textMin.text.toString()
@@ -186,5 +176,4 @@ class Meditation : AppCompatActivity() {
         buttonStartStop.text = "START"
         isRunning = false
     }
-
 }

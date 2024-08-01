@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.fragment_search -> {
-                    startActivity(Intent(this, Diary_write::class.java))
+                    startActivity(Intent(this, Diary_List::class.java))
                     true
                 }
                 R.id.fragment_favorite -> {
