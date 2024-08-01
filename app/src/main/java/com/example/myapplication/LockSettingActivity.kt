@@ -26,7 +26,7 @@ class LockSettingActivity : AppCompatActivity() {
         switchBtn = findViewById(R.id.switchBtn)
         buttonPWChange = findViewById(R.id.buttonPWChange)
 
-        // Load and set initial switch state
+        // 스위치 상태 초기값 로드 및 설정
         switchBtn.isChecked = sharedPreferences.getBoolean("lock_enabled", false)
 
         switchBtn.setOnCheckedChangeListener { _, isChecked ->

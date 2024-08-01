@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
-class DiaryWriteActivity : AppCompatActivity() {
+class Diary_write : AppCompatActivity() {
 
     private lateinit var diaryText: EditText
     private lateinit var dateText: TextView
