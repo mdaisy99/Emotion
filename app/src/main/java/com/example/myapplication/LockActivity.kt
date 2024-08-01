@@ -92,12 +92,15 @@ class LockActivity : AppCompatActivity() {
     private fun checkPassword() {
         val savedPassword = sharedPreferences.getString("password", null)
         if (inputPassword.toString() == savedPassword) {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+            // Correct password: navigate to MainActivity with unlocked flag
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("unlocked", true)
+            startActivity(intent)
+            finish() // Ensure LockActivity is finished
         } else {
             inputPassword.clear()
             updateIndicators()
-            // 암호가 잘못되었다는 메세지 출력
+            // 암호가 잘못되었다는 메시지 출력
             Toast.makeText(this, "암호가 잘못되었습니다.", Toast.LENGTH_SHORT).show()
         }
     }

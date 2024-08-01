@@ -21,13 +21,15 @@ class MainActivity : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
 
+        // 비밀번호 설정 확인
         if (sharedPreferences.getBoolean("lock_enabled", false)) {
             val savedPassword = sharedPreferences.getString("password", null)
-            if (savedPassword != null) {
+            if (!intent.getBooleanExtra("unlocked", false) && savedPassword != null) {
                 // 비밀번호 입력화면 표시
                 val intent = Intent(this, LockActivity::class.java)
                 startActivity(intent)
-                finish() // 잠금해제 후 앱 사용 가능
+                finish()
+                return
             }
         }
 

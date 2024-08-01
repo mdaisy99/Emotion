@@ -39,6 +39,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".LockSettingActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".PwSettingActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
