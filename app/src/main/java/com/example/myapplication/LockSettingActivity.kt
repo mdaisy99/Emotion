@@ -1,14 +1,11 @@
 package com.example.myapplication
 
-import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Bundle
 import android.widget.CompoundButton
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 
 class LockSettingActivity : AppCompatActivity() {
 
@@ -16,17 +13,15 @@ class LockSettingActivity : AppCompatActivity() {
     private lateinit var buttonPWChange: Button
     private lateinit var sharedPreferences: SharedPreferences
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_lock_setting)
 
         sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
         switchBtn = findViewById(R.id.switchBtn)
         buttonPWChange = findViewById(R.id.buttonPWChange)
 
-        // 스위치 상태 초기값 로드 및 설정
+        // 스위치 초기값 불러오기
         switchBtn.isChecked = sharedPreferences.getBoolean("lock_enabled", false)
 
         switchBtn.setOnCheckedChangeListener { _, isChecked ->
@@ -37,12 +32,6 @@ class LockSettingActivity : AppCompatActivity() {
             val intent = Intent(this, PwSettingActivity::class.java)
             intent.putExtra("isChangeMode", true) // Indicate that it's for password change
             startActivity(intent)
-        }
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
         }
     }
 }

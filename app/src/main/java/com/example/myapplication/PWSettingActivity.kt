@@ -1,6 +1,5 @@
 package com.example.myapplication
 
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
@@ -11,7 +10,6 @@ class PwSettingActivity : AppCompatActivity() {
 
     private lateinit var buttons: List<Button>
     private lateinit var buttonDel: Button
-    private lateinit var button0: Button
     private lateinit var buttonStartStop: Button
     private lateinit var pwIndicators: List<ImageView>
     private lateinit var sharedPreferences: SharedPreferences
@@ -22,8 +20,8 @@ class PwSettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pwsetting)
 
-        sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
-        isChangeMode = intent.getBooleanExtra("isChangeMode", false)
+        sharedPreferences = getSharedPreferences("앱 기본 설정", MODE_PRIVATE)
+        isChangeMode = intent.getBooleanExtra("변경", false)
 
         buttons = listOf(
             findViewById(R.id.button1),
@@ -46,21 +44,21 @@ class PwSettingActivity : AppCompatActivity() {
             findViewById(R.id.pw04)
         )
 
-        // Initialize buttons
+        // 버튼 초기화
         buttons.forEachIndexed { index, button ->
             button.setOnClickListener {
                 onNumberButtonClick(index + 1)
             }
         }
-        button0.setOnClickListener { onNumberButtonClick(0) }
+        findViewById<Button>(R.id.button0).setOnClickListener { onNumberButtonClick(0) }
         buttonDel.setOnClickListener { onDeleteButtonClick() }
         buttonStartStop.setOnClickListener { onBackspaceButtonClick() }
 
-        // Handle the case of changing or setting the password
+        // 비밀번호 변경 또는 설정 시 처리
         if (isChangeMode) {
-            title = "Change Password"
+            title = "비밀번호 변경"
         } else {
-            title = "Set Password"
+            title = "비밀번호 설정"
         }
     }
 
@@ -95,10 +93,8 @@ class PwSettingActivity : AppCompatActivity() {
     private fun savePassword() {
         if (inputPassword.length == 4) {
             val password = inputPassword.toString()
-            sharedPreferences.edit().putString("password", password).apply()
-            if (!isChangeMode) {
-                finish() // Close activity and go back to lock settings
-            }
+            sharedPreferences.edit().putString("비밀번호", password).apply()
+            finish() // 잠금 설정 화면으로 돌아가기
         }
     }
 }

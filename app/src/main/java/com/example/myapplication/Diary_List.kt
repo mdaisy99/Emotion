@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.database.Cursor
 import android.os.Bundle
 import android.widget.LinearLayout
@@ -38,6 +39,12 @@ class Diary_List : AppCompatActivity() {
                     text = "$date\n$content"
                     textSize = 16f
                     setPadding(0, 0, 0, 24)
+                    setOnClickListener {
+                        val intent = Intent(this@Diary_List, Diary_list_item::class.java)
+                        intent.putExtra("date", date)
+                        intent.putExtra("content", content)
+                        startActivity(intent)
+                    }
                 }
                 diaryListLayout.addView(entryView)
             }

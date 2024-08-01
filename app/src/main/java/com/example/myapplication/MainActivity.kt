@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.content.Intent
 import android.content.SharedPreferences
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,9 +23,37 @@ class MainActivity : AppCompatActivity() {
         if (sharedPreferences.getBoolean("lock_enabled", false)) {
             val savedPassword = sharedPreferences.getString("password", null)
             if (savedPassword != null) {
-                // Show password input screen
-                val intent = Intent(this, PwSettingActivity::class.java)
+                // 비밀번호 입력화면 표시
+                val intent = Intent(this, LockActivity::class.java)
                 startActivity(intent)
+                finish() // 잠금해제 후 앱 사용 가능
+            }
+        }
+
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.navigationView)
+        bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.fragment_home -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                    true
+                }
+                R.id.fragment_search -> {
+                    startActivity(Intent(this, Diary_write::class.java))
+                    true
+                }
+                R.id.fragment_favorite -> {
+                    startActivity(Intent(this, Meditation::class.java))
+                    true
+                }
+                R.id.fragment_Calendar -> {
+                    startActivity(Intent(this, EmotionCalActivity::class.java))
+                    true
+                }
+                R.id.fragment_settings -> {
+                    startActivity(Intent(this, LockSettingActivity::class.java))
+                    true
+                }
+                else -> false
             }
         }
 

@@ -30,8 +30,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DiaryWriteActivity"/>
-        <activity android:name=".DiaryListActivity"/>
+        <activity android:name=".Diary_write"/>
+        <activity android:name=".Diary_List"/>
+        <activity android:name=".Diary_list_item"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
