@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.content.Intent
 import android.content.SharedPreferences
+import android.widget.Button
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +29,12 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish() // 잠금해제 후 앱 사용 가능
             }
+        }
+
+        val btnConfirm = findViewById<Button>(R.id.btn_confirm)
+        btnConfirm.setOnClickListener {
+            val intent = Intent(this, Diary_write::class.java)
+            startActivity(intent)
         }
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.navigationView)

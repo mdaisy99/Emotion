@@ -12,6 +12,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import android.content.Context
 import android.os.CountDownTimer
 import android.widget.Button
+import android.widget.Chronometer
 import android.widget.TextView
 
 class Meditation : AppCompatActivity() {
@@ -19,8 +20,7 @@ class Meditation : AppCompatActivity() {
     lateinit var emotionWord: TextView
     lateinit var emotionMean: TextView
 
-    private lateinit var textMin: TextView
-    private lateinit var textSec: TextView
+    private lateinit var chronometer: Chronometer
     private lateinit var buttonStartStop: Button
     private var timer: CountDownTimer? = null
     private var isRunning = false
@@ -75,8 +75,10 @@ class Meditation : AppCompatActivity() {
         // LocalBroadcastManager 등록
         LocalBroadcastManager.getInstance(this).registerReceiver(midnightReceiver, IntentFilter("MIDNIGHT_ALARM"))
 
-        textMin = findViewById(R.id.textMin)
-        textSec = findViewById(R.id.textSec)
+        // 앱 실행 시 한 번 midnightReceiver 실행
+        midnightReceiver.onReceive(this, Intent())
+
+        chronometer = findViewById(R.id.chronometer)
         buttonStartStop = findViewById(R.id.buttonStartStop)
 
         val buttons = listOf(
@@ -106,12 +108,11 @@ class Meditation : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.buttonDel).setOnClickListener {
-            textMin.text = "00"
-            textSec.text = "00"
+            chronometer.text = "00:00"
         }
 
         timeButtons.forEach { button ->
-            button.setOnClickListener { onTimeButtonClick(button.text.toString().replace("min", "")) }
+            button.setOnClickListener { onTimeButtonClick(button.text.toString().replace("분", "")) }
         }
 
         buttonStartStop.setOnClickListener {
@@ -130,23 +131,21 @@ class Meditation : AppCompatActivity() {
     }
 
     private fun onNumberButtonClick(number: String) {
-        val currentMin = textMin.text.toString()
-        val currentSec = textSec.text.toString()
-        if (currentMin == "00") {
-            textMin.text = number.padStart(2, '0')
-        } else if (currentSec == "00") {
-            textSec.text = number.padStart(2, '0')
-        }
+        val currentText = chronometer.text.toString().replace(":", "")
+        val newText = (currentText + number).takeLast(4).padStart(4, '0')
+        val minutes = newText.substring(0, 2)
+        val seconds = newText.substring(2, 4)
+        chronometer.text = "$minutes:$seconds"
     }
 
     private fun onTimeButtonClick(time: String) {
-        textMin.text = time.padStart(2, '0')
-        textSec.text = "00"
+        chronometer.text = time.padStart(2, '0') + ":00"
     }
 
     private fun startTimer() {
-        val minutes = textMin.text.toString().toInt()
-        val seconds = textSec.text.toString().toInt()
+        val currentText = chronometer.text.toString().split(":")
+        val minutes = currentText[0].toInt()
+        val seconds = currentText[1].toInt()
         timeInMillis = ((minutes * 60) + seconds) * 1000L
 
         timer = object : CountDownTimer(timeInMillis, 1000) {
@@ -154,13 +153,11 @@ class Meditation : AppCompatActivity() {
                 val totalSeconds = millisUntilFinished / 1000
                 val minutes = totalSeconds / 60
                 val seconds = totalSeconds % 60
-                textMin.text = minutes.toString().padStart(2, '0')
-                textSec.text = seconds.toString().padStart(2, '0')
+                chronometer.text = minutes.toString().padStart(2, '0') + ":" + seconds.toString().padStart(2, '0')
             }
 
             override fun onFinish() {
-                textMin.text = "00"
-                textSec.text = "00"
+                chronometer.text = "00:00"
                 buttonStartStop.text = "START"
                 isRunning = false
             }

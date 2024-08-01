@@ -16,6 +16,8 @@ class Diary_write : AppCompatActivity() {
     private lateinit var dateText: TextView
     private lateinit var saveButton: ImageButton
     private lateinit var dbHelper: DiaryDatabaseHelper
+    private var id: Long = 0
+    private var isEditMode: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +28,23 @@ class Diary_write : AppCompatActivity() {
         saveButton = findViewById(R.id.imageButton3)
         dbHelper = DiaryDatabaseHelper(this)
 
-        val currentDate = SimpleDateFormat("yyyy.MM.dd.", Locale.getDefault()).format(Date())
-        dateText.text = currentDate
+        // Intent에서 데이터 받아오기
+        id = intent.getLongExtra("id", 0)
+        val date = intent.getStringExtra("date")
+        val content = intent.getStringExtra("content")
+
+        // 수정 모드인지 확인
+        isEditMode = intent.hasExtra("id")
+
+        if (isEditMode) {
+            // 수정 모드일 경우 기존 데이터 표시
+            dateText.text = date
+            diaryText.setText(content)
+        } else {
+            // 새 작성 모드일 경우 현재 날짜 표시
+            val currentDate = SimpleDateFormat("yyyy.MM.dd.", Locale.getDefault()).format(Date())
+            dateText.text = currentDate
+        }
 
         saveButton.setOnClickListener {
             saveDiaryEntry()
@@ -44,9 +61,16 @@ class Diary_write : AppCompatActivity() {
                 put(DiaryDatabaseHelper.COLUMN_DATE, date)
                 put(DiaryDatabaseHelper.COLUMN_CONTENT, content)
             }
-            db.insert(DiaryDatabaseHelper.TABLE_NAME, null, values)
-            db.close()
 
+            if (isEditMode) {
+                // 수정 모드일 경우 업데이트
+                db.update(DiaryDatabaseHelper.TABLE_NAME, values, "${DiaryDatabaseHelper.COLUMN_ID} = ?", arrayOf(id.toString()))
+            } else {
+                // 새 작성 모드일 경우 삽입
+                db.insert(DiaryDatabaseHelper.TABLE_NAME, null, values)
+            }
+
+            db.close()
             startActivity(Intent(this, Diary_List::class.java))
             finish()
         }
