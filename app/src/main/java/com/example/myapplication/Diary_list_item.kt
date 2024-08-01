@@ -52,6 +52,9 @@ class Diary_list_item : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_retouch -> {
                 val intent = Intent(this, Diary_write::class.java)
+                intent.putExtra("id", id)
+                intent.putExtra("date", date)
+                intent.putExtra("content", intent.getStringExtra("content"))
                 startActivity(intent)
                 finish() // 현재 액티비티를 종료
                 true
