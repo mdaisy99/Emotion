@@ -1,11 +1,11 @@
 package com.example.myapplication
 
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.TextView
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 
@@ -59,7 +59,6 @@ class Diary_list_item : AppCompatActivity() {
             R.id.action_remove -> {
                 // 데이터베이스에서 일기 삭제
                 dbHelper.deleteDiaryEntry(id)
-                // Diary_write.kt로 이동
                 val intent = Intent(this, Diary_List::class.java)
                 startActivity(intent)
                 finish() // 현재 액티비티를 종료

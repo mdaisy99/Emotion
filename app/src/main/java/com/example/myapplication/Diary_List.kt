@@ -26,12 +26,13 @@ class Diary_List : AppCompatActivity() {
         val db = dbHelper.readableDatabase
         val cursor: Cursor = db.query(
             DiaryDatabaseHelper.TABLE_NAME,
-            arrayOf(DiaryDatabaseHelper.COLUMN_DATE, DiaryDatabaseHelper.COLUMN_CONTENT),
+            arrayOf(DiaryDatabaseHelper.COLUMN_ID, DiaryDatabaseHelper.COLUMN_DATE, DiaryDatabaseHelper.COLUMN_CONTENT),
             null, null, null, null, null
         )
 
         with(cursor) {
             while (moveToNext()) {
+                val id = getLong(getColumnIndexOrThrow(DiaryDatabaseHelper.COLUMN_ID))
                 val date = getString(getColumnIndexOrThrow(DiaryDatabaseHelper.COLUMN_DATE))
                 val content = getString(getColumnIndexOrThrow(DiaryDatabaseHelper.COLUMN_CONTENT)).take(100)
 
@@ -41,6 +42,7 @@ class Diary_List : AppCompatActivity() {
                     setPadding(0, 0, 0, 24)
                     setOnClickListener {
                         val intent = Intent(this@Diary_List, Diary_list_item::class.java)
+                        intent.putExtra("id", id)
                         intent.putExtra("date", date)
                         intent.putExtra("content", content)
                         startActivity(intent)
