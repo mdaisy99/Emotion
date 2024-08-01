@@ -1,13 +1,20 @@
 package com.example.myapplication
 
-import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
+import android.content.Intent
+import android.os.Bundle
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 
 class Diary_list_item : AppCompatActivity() {
+
+    private lateinit var dbHelper: DiaryDatabaseHelper
+    private var date: String? = null
+    private var id: Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list_item_diary)
@@ -19,10 +26,21 @@ class Diary_list_item : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         // 받아온 데이터로 일기 내용을 화면에 표시
-        val date = intent.getStringExtra("date")
+        date = intent.getStringExtra("date")
         val content = intent.getStringExtra("content")
+        id = intent.getLongExtra("id", 0)
+
         findViewById<TextView>(R.id.diary_text).text = content
         findViewById<TextView>(R.id.daily_date).text = date
+
+        dbHelper = DiaryDatabaseHelper(this)
+
+        val imageButton3: ImageButton = findViewById(R.id.imageButton3)
+        imageButton3.setOnClickListener {
+            val intent = Intent(this, Diary_List::class.java)
+            startActivity(intent)
+            finish() // 현재 액티비티를 종료
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -33,11 +51,18 @@ class Diary_list_item : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_retouch -> {
-                // 수정 작업
+                val intent = Intent(this, Diary_write::class.java)
+                startActivity(intent)
+                finish() // 현재 액티비티를 종료
                 true
             }
             R.id.action_remove -> {
-                // 삭제 작업
+                // 데이터베이스에서 일기 삭제
+                dbHelper.deleteDiaryEntry(id)
+                // Diary_write.kt로 이동
+                val intent = Intent(this, Diary_List::class.java)
+                startActivity(intent)
+                finish() // 현재 액티비티를 종료
                 true
             }
             else -> super.onOptionsItemSelected(item)

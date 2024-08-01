@@ -27,4 +27,10 @@ class DiaryDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         db?.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
         onCreate(db)
     }
+
+    fun deleteDiaryEntry(id: Long) {
+        val db = this.writableDatabase
+        db.delete(TABLE_NAME, "$COLUMN_ID = ?", arrayOf(id.toString()))
+        db.close()
+    }
 }
