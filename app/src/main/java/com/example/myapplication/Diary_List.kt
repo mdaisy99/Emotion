@@ -6,7 +6,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-class DiaryListActivity : AppCompatActivity() {
+class Diary_List : AppCompatActivity() {
 
     private lateinit var dbHelper: DiaryDatabaseHelper
     private lateinit var diaryListLayout: LinearLayout
@@ -34,7 +34,7 @@ class DiaryListActivity : AppCompatActivity() {
                 val date = getString(getColumnIndexOrThrow(DiaryDatabaseHelper.COLUMN_DATE))
                 val content = getString(getColumnIndexOrThrow(DiaryDatabaseHelper.COLUMN_CONTENT)).take(100)
 
-                val entryView = TextView(this@DiaryListActivity).apply {
+                val entryView = TextView(this@Diary_List).apply {
                     text = "$date\n$content"
                     textSize = 16f
                     setPadding(0, 0, 0, 24)

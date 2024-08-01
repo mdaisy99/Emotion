@@ -47,7 +47,7 @@ class DiaryWriteActivity : AppCompatActivity() {
             db.insert(DiaryDatabaseHelper.TABLE_NAME, null, values)
             db.close()
 
-            val intent = Intent(this, DiaryListActivity::class.java)
+            val intent = Intent(this, Diary_List::class.java)
             startActivity(intent)
             finish()
         }
