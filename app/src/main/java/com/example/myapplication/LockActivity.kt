@@ -92,11 +92,11 @@ class LockActivity : AppCompatActivity() {
     private fun checkPassword() {
         val savedPassword = sharedPreferences.getString("password", null)
         if (inputPassword.toString() == savedPassword) {
-            // Correct password: navigate to MainActivity with unlocked flag
+            // 비밀번호가 맞을 경우, 잠금 해제 플래그를 사용하여 MainActivity로 이동합니다
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("unlocked", true)
             startActivity(intent)
-            finish() // Ensure LockActivity is finished
+            finish() // 액티비티 종료
         } else {
             inputPassword.clear()
             updateIndicators()

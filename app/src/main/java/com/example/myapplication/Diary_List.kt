@@ -21,7 +21,7 @@ class Diary_List : AppCompatActivity() {
 
         loadDiaryEntries()
     }
-
+    // 데이터베이스 불러오기
     private fun loadDiaryEntries() {
         val db = dbHelper.readableDatabase
         val cursor: Cursor = db.query(

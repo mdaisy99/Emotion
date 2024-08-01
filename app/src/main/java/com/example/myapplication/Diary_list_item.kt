@@ -14,6 +14,7 @@ class Diary_list_item : AppCompatActivity() {
     private lateinit var dbHelper: DiaryDatabaseHelper
     private var date: String? = null
     private var id: Long = 0
+    private var content: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +28,7 @@ class Diary_list_item : AppCompatActivity() {
 
         // 받아온 데이터로 일기 내용을 화면에 표시
         date = intent.getStringExtra("date")
-        val content = intent.getStringExtra("content")
+        content = intent.getStringExtra("content")
         id = intent.getLongExtra("id", 0)
 
         findViewById<TextView>(R.id.diary_text).text = content
@@ -54,7 +55,7 @@ class Diary_list_item : AppCompatActivity() {
                 val intent = Intent(this, Diary_write::class.java)
                 intent.putExtra("id", id)
                 intent.putExtra("date", date)
-                intent.putExtra("content", intent.getStringExtra("content"))
+                intent.putExtra("content", content)
                 startActivity(intent)
                 finish() // 현재 액티비티를 종료
                 true
