@@ -27,7 +27,6 @@ class Meditation : AppCompatActivity() {
     private var timeInMillis: Long = 0
 
     private val midnightReceiver = object : BroadcastReceiver() {
-
         override fun onReceive(context: Context, intent: Intent) {
             // TextView 내용 변경
             val (newWord, newMean) = getNewEmotionWordAndMean()
@@ -71,7 +70,7 @@ class Meditation : AppCompatActivity() {
         emotionMean = findViewById(R.id.emotionMean)
 
         // 자정 알람 설정
-        // AlarmHelper.setMidnightAlarm(this)  // 알람 설정 부분 주석 처리
+        AlarmHelper.setMidnightAlarm(this)
 
         // LocalBroadcastManager 등록
         LocalBroadcastManager.getInstance(this).registerReceiver(midnightReceiver, IntentFilter("MIDNIGHT_ALARM"))
