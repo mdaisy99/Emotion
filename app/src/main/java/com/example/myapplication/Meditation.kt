@@ -112,7 +112,7 @@ class Meditation : AppCompatActivity() {
         }
 
         timeButtons.forEach { button ->
-            button.setOnClickListener { onTimeButtonClick(button.text.toString()) }
+            button.setOnClickListener { onTimeButtonClick(button.text.toString().replace("min", "")) }
         }
 
         buttonStartStop.setOnClickListener {
