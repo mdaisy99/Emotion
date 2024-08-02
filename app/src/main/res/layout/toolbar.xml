@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
-    app:menu="@menu/menu_list_item_diary">
+    app:menu="@menu/menu_list_item_diary"
+    android:background="@color/white">
 
 </androidx.appcompat.widget.Toolbar>

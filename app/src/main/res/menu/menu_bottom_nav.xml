@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white">
 
 
     <item
@@ -11,7 +12,7 @@
         android:title="일기장"
         android:icon="@drawable/ic_diary"/>
     <item
-        android:id="@+id/fragment_favorite"
+        android:id="@+id/fragment_timer"
         android:title="타이머"
         android:icon="@drawable/ic_timer"/>
     <item
