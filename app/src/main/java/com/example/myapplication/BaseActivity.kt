@@ -11,8 +11,11 @@ open class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
     }
 
-    protected fun setupBottomNavigation() {
+    protected fun setupBottomNavigation(selectedItemId: Int) {
         val bottomNavigation: BottomNavigationView = findViewById(R.id.navigationView)
+
+        bottomNavigation.selectedItemId = selectedItemId
+
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.fragment_home -> {

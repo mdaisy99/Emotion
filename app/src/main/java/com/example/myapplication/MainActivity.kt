@@ -21,13 +21,14 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+        setupBottomNavigation(R.id.fragment_home)
 
         sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
 
         loadEmotion()
 
         setupMoodButtons()
-        setupBottomNavigation()
+
 
         val btnSaveEmotion = findViewById<Button>(R.id.btn_emotion)
         btnSaveEmotion.setOnClickListener {

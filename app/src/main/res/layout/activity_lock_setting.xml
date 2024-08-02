@@ -107,11 +107,14 @@
             android:id="@+id/buttonPWChange"
             android:layout_width="417dp"
             android:layout_height="78dp"
+            android:layout_marginTop="1dp"
             android:background="@android:color/transparent"
             android:gravity="left"
             android:padding="0dp"
             android:textColor="@android:color/black"
-            tools:layout_editor_absoluteY="7dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view2" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
