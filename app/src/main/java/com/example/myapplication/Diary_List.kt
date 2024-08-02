@@ -15,12 +15,13 @@ class Diary_List : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_diary_list)
+        setupBottomNavigation(R.id.fragment_search)
 
         diaryListLayout = findViewById(R.id.dadarar)
         dbHelper = DiaryDatabaseHelper(this)
 
         loadDiaryEntries()
-        setupBottomNavigation()
+        //setupBottomNavigation()
     }
     // 데이터베이스 불러오기
     private fun loadDiaryEntries() {

@@ -64,6 +64,7 @@ class Meditation : BaseActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_meditation)
+        setupBottomNavigation(R.id.fragment_favorite)
 
         // TextView 초기화
         emotionWord = findViewById(R.id.emotionWord)
@@ -129,7 +130,7 @@ class Meditation : BaseActivity() {
             WindowInsetsCompat.CONSUMED
         }
 
-        setupBottomNavigation() // 바텀 바
+        //setupBottomNavigation() // 바텀 바
     }
 
     private fun onNumberButtonClick(number: String) {

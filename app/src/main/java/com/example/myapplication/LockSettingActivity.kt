@@ -16,6 +16,7 @@ class LockSettingActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lock_setting)
+        setupBottomNavigation(R.id.fragment_settings)
 
         sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
         switchBtn = findViewById(R.id.switchBtn)
@@ -33,6 +34,6 @@ class LockSettingActivity : BaseActivity() {
             intent.putExtra("isChangeMode", true) // Indicate that it's for password change
             startActivity(intent)
         }
-        setupBottomNavigation()
+        //setupBottomNavigation()
     }
 }

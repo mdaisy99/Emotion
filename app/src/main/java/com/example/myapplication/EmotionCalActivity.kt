@@ -50,6 +50,7 @@ class EmotionCalActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_emotion_cal)
+        setupBottomNavigation(R.id.fragment_Calendar)
 
         sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
 
@@ -92,7 +93,7 @@ class EmotionCalActivity : BaseActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        setupBottomNavigation()
+        //setupBottomNavigation()
     }
 
     private fun updateEmotionImages() {
