@@ -12,7 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.ImageView
 import java.util.Calendar
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
     private var selectedEmotion: String = "normal"
@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         loadEmotion()
 
         setupMoodButtons()
+        setupBottomNavigation()
 
         val btnSaveEmotion = findViewById<Button>(R.id.btn_emotion)
         btnSaveEmotion.setOnClickListener {
@@ -49,33 +50,6 @@ class MainActivity : AppCompatActivity() {
         btnConfirm.setOnClickListener {
             val intent = Intent(this, Diary_write::class.java)
             startActivity(intent)
-        }
-
-        val bottomNavigation: BottomNavigationView = findViewById(R.id.navigationView)
-        bottomNavigation.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.fragment_home -> {
-                    startActivity(Intent(this, MainActivity::class.java))
-                    true
-                }
-                R.id.fragment_search -> {
-                    startActivity(Intent(this, Diary_List::class.java))
-                    true
-                }
-                R.id.fragment_favorite -> {
-                    startActivity(Intent(this, Meditation::class.java))
-                    true
-                }
-                R.id.fragment_Calendar -> {
-                    startActivity(Intent(this, EmotionCalActivity::class.java))
-                    true
-                }
-                R.id.fragment_settings -> {
-                    startActivity(Intent(this, LockSettingActivity::class.java))
-                    true
-                }
-                else -> false
-            }
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.btn_confirm)) { v, insets ->

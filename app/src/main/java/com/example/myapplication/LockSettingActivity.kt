@@ -7,7 +7,7 @@ import android.widget.Switch
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-class LockSettingActivity : AppCompatActivity() {
+class LockSettingActivity : BaseActivity() {
 
     private lateinit var switchBtn: Switch
     private lateinit var buttonPWChange: Button
@@ -33,5 +33,6 @@ class LockSettingActivity : AppCompatActivity() {
             intent.putExtra("isChangeMode", true) // Indicate that it's for password change
             startActivity(intent)
         }
+        setupBottomNavigation()
     }
 }

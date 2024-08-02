@@ -15,7 +15,7 @@ import android.widget.Button
 import android.widget.Chronometer
 import android.widget.TextView
 
-class Meditation : AppCompatActivity() {
+class Meditation : BaseActivity() {
 
     lateinit var emotionWord: TextView
     lateinit var emotionMean: TextView
@@ -128,6 +128,8 @@ class Meditation : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             WindowInsetsCompat.CONSUMED
         }
+
+        setupBottomNavigation() // 바텀 바
     }
 
     private fun onNumberButtonClick(number: String) {

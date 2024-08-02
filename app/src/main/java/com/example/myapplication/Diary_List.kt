@@ -7,7 +7,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-class Diary_List : AppCompatActivity() {
+class Diary_List : BaseActivity() {
 
     private lateinit var dbHelper: DiaryDatabaseHelper
     private lateinit var diaryListLayout: LinearLayout
@@ -20,6 +20,7 @@ class Diary_List : AppCompatActivity() {
         dbHelper = DiaryDatabaseHelper(this)
 
         loadDiaryEntries()
+        setupBottomNavigation()
     }
     // 데이터베이스 불러오기
     private fun loadDiaryEntries() {

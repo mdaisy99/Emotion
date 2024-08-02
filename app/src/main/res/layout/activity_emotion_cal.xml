@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EmotionCalActivity"
-    android:background="@color/white"
-    tools:layout_editor_absoluteY="25dp">
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/textView36"
@@ -29,7 +28,7 @@
         android:layout_width="0dp"
         android:layout_height="295dp"
         android:layout_marginTop="80dp"
-        android:layout_marginBottom="182dp"
+        android:layout_marginBottom="180dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
@@ -1000,5 +999,18 @@
             app:srcCompat="@drawable/happy" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:itemBackground="@android:color/white"
+        app:itemRippleColor="@android:color/white"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_bottom_nav"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

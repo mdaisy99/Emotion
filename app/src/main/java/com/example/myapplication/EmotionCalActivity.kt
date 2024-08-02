@@ -10,7 +10,7 @@ import android.media.Image
 import android.widget.ImageView
 import android.widget.TextView
 
-class EmotionCalActivity : AppCompatActivity() {
+class EmotionCalActivity : BaseActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
 
@@ -92,6 +92,7 @@ class EmotionCalActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        setupBottomNavigation()
     }
 
     private fun updateEmotionImages() {
