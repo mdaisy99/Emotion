@@ -41,7 +41,7 @@
         android:layout_height="33dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
@@ -53,21 +53,24 @@
             android:layout_marginEnd="286dp"
             android:layout_marginBottom="8dp"
             android:text="오늘의 감정 단어"
-            android:textSize="15sp"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.538" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="0dp"
         android:layout_height="109dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout10"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
@@ -89,7 +92,7 @@
             android:layout_height="44dp"
             android:layout_gravity="center"
             android:layout_marginTop="48dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginBottom="4dp"
             android:src="@drawable/normal"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -101,23 +104,26 @@
             android:id="@+id/emotionWord"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="감정 단어"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="보람차다"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.157"
+            app:layout_constraintHorizontal_bias="0.07"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/emotionMean"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="45dp"
-            android:text="감정 단어 뜻 적는 부분입니다..."
+            android:layout_width="317dp"
+            android:layout_height="63dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="어떤 일을 한 뒤에 결과가 몹시 좋아서 자랑스러움과 자부심을 갖게 할 만큼 만족스럽다."
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.286"
+            app:layout_constraintHorizontal_bias="0.442"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -128,7 +134,7 @@
         android:layout_height="33dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
@@ -140,17 +146,21 @@
             android:layout_marginEnd="340dp"
             android:layout_marginBottom="8dp"
             android:text="타이머"
-            android:textSize="15sp"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.538" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout6"
-        android:layout_width="0dp"
-        android:layout_height="107dp"
+        android:layout_width="414dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -160,22 +170,25 @@
             android:id="@+id/chronometer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:gravity="center_horizontal"
             android:textSize="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout9"
         android:layout_width="420dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout8"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent">
 
 
@@ -259,15 +272,15 @@
         android:id="@+id/constraintLayout8"
         android:layout_width="0dp"
         android:layout_height="232dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/button1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="134dp"
+            android:layout_height="62dp"
             android:layout_margin="0dp"
             android:background="@android:color/transparent"
             android:padding="0dp"

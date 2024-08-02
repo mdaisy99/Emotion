@@ -370,12 +370,12 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         app:itemBackground="@color/white"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout_main_btn"
         app:menu="@menu/menu_bottom_nav"
-        tools:ignore="MissingConstraints"
-        app:labelVisibilityMode="unlabeled"/>
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
