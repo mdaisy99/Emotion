@@ -22,6 +22,7 @@ class Diary_List : BaseActivity() {
         loadDiaryEntries()
         setupBottomNavigation()
     }
+
     // 데이터베이스 불러오기
     private fun loadDiaryEntries() {
         val db = dbHelper.readableDatabase
@@ -35,12 +36,14 @@ class Diary_List : BaseActivity() {
             while (moveToNext()) {
                 val id = getLong(getColumnIndexOrThrow(DiaryDatabaseHelper.COLUMN_ID))
                 val date = getString(getColumnIndexOrThrow(DiaryDatabaseHelper.COLUMN_DATE))
-                val content = getString(getColumnIndexOrThrow(DiaryDatabaseHelper.COLUMN_CONTENT)).take(100)
+                val content = getString(getColumnIndexOrThrow(DiaryDatabaseHelper.COLUMN_CONTENT))
 
                 val entryView = TextView(this@Diary_List).apply {
                     text = "$date\n$content"
                     textSize = 16f
                     setPadding(0, 0, 0, 24)
+                    maxLines = 3  // 최대 3줄까지만 표시
+                    ellipsize = android.text.TextUtils.TruncateAt.END  // 내용이 길어지면 말줄임표(...)로 표시
                     setOnClickListener {
                         val intent = Intent(this@Diary_List, Diary_list_item::class.java)
                         intent.putExtra("id", id)

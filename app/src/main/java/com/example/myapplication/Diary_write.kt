@@ -71,8 +71,9 @@ class Diary_write : AppCompatActivity() {
             }
 
             db.close()
-            startActivity(Intent(this, Diary_List::class.java))
-            finish()
         }
+        // 내용이 비어 있더라도 화면 종료
+        startActivity(Intent(this, Diary_List::class.java))
+        finish()
     }
 }

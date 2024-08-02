@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 
-class PwSettingActivity : AppCompatActivity() {
+class PWSettingActivity : AppCompatActivity() {
 
     private lateinit var buttons: List<Button>
     private lateinit var buttonDel: Button

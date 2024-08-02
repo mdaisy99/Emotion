@@ -19,7 +19,7 @@ class DiaryDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         val createTable = ("CREATE TABLE $TABLE_NAME ("
                 + "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + "$COLUMN_DATE TEXT,"
-                + "$COLUMN_CONTENT TEXT)")
+                + "$COLUMN_CONTENT TEXT)")  // Ensure COLUMN_CONTENT is of type TEXT
         db?.execSQL(createTable)
     }
 

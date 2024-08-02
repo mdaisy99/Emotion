@@ -29,7 +29,7 @@ class LockSettingActivity : BaseActivity() {
         }
 
         buttonPWChange.setOnClickListener {
-            val intent = Intent(this, PwSettingActivity::class.java)
+            val intent = Intent(this, PWSettingActivity::class.java)
             intent.putExtra("isChangeMode", true) // Indicate that it's for password change
             startActivity(intent)
         }
