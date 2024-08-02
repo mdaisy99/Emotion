@@ -12,7 +12,7 @@
         android:title="일기장"
         android:icon="@drawable/ic_diary"/>
     <item
-        android:id="@+id/fragment_timer"
+        android:id="@+id/fragment_favorite"
         android:title="타이머"
         android:icon="@drawable/ic_timer"/>
     <item
