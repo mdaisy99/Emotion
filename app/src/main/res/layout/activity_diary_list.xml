@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".Diary_List">
+    tools:context=".Diary_List"
+    android:background="@color/white">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"

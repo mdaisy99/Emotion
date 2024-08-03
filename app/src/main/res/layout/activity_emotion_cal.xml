@@ -1004,13 +1004,16 @@
         android:id="@+id/navigationView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:itemBackground="@android:color/white"
-        app:itemRippleColor="@android:color/white"
+        android:layout_weight="1"
+        android:layout_gravity="bottom"
+        android:background="@android:color/white"
+        app:itemBackground="@color/white"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_bottom_nav"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/menu_bottom_nav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,7 +44,7 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".PwSettingActivity"
+            android:name=".PWSettingActivity"
             android:exported="true">
         </activity>
     </application>

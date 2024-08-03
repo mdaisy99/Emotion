@@ -8,7 +8,6 @@ import androidx.core.view.WindowInsetsCompat
 import android.content.Intent
 import android.content.SharedPreferences
 import android.widget.Button
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.ImageView
 import java.util.Calendar
 
